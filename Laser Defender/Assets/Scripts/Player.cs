@@ -16,6 +16,16 @@ public class Player : MonoBehaviour
     Vector2 minBounds;
     Vector2 maxBounds;
 
+    Shooter shooter;
+
+    /// <summary>
+    /// Awake is called when the script instance is being loaded.
+    /// </summary>
+    private void Awake()
+    {
+        shooter = GetComponent<Shooter>();
+    }
+
     void Start() 
     {
         InitBounds();
@@ -45,5 +55,13 @@ public class Player : MonoBehaviour
     void OnMove(InputValue value)
     {
         rawInput = value.Get<Vector2>();    
+    }
+
+    void OnFire(InputValue value)
+    {
+        if (shooter != null)
+        {
+            shooter.isFiring = value.isPressed;
+        }
     }
 }
