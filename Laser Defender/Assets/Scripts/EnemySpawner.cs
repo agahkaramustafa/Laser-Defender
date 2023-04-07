@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] List<WaveConfigSO> waveConfigs;
     [SerializeField] float timeBetweenWaves = 0f;
     [SerializeField] bool isLooping;
-    
+
     WaveConfigSO currentWave;
 
     // Start is called before the first frame update
@@ -33,7 +33,7 @@ public class EnemySpawner : MonoBehaviour
                 {
                     Instantiate(currentWave.GetEnemyPrefab(i), 
                                 currentWave.GetStartingWaypoint().position, 
-                                Quaternion.identity,
+                                Quaternion.Euler(0,0,180),
                                 transform);
                     yield return new WaitForSeconds(currentWave.GetRandomSpawnTime());
                 }
