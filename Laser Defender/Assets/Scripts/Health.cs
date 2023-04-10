@@ -14,6 +14,7 @@ public class Health : MonoBehaviour
 
     AudioPlayer audioPlayer;
     ScoreKeeper scoreKeeper;
+    UIDisplay uiDisplay;
 
     public int GetHealth { get {return health;} }
 
@@ -22,6 +23,12 @@ public class Health : MonoBehaviour
         cameraShake = Camera.main.GetComponent<CameraShake>();
         audioPlayer = FindObjectOfType<AudioPlayer>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        uiDisplay = FindObjectOfType<UIDisplay>();
+    }
+
+    void Start()
+    {
+        uiDisplay.UpdateScore();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -44,6 +51,7 @@ public class Health : MonoBehaviour
         if (health <= 0)
         {
             Die();
+            uiDisplay.UpdateScore();
         }
     }
 
