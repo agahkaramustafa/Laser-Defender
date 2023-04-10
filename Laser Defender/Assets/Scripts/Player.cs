@@ -18,9 +18,6 @@ public class Player : MonoBehaviour
 
     Shooter shooter;
 
-    /// <summary>
-    /// Awake is called when the script instance is being loaded.
-    /// </summary>
     private void Awake()
     {
         shooter = GetComponent<Shooter>();
